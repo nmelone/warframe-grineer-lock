@@ -1,10 +1,12 @@
 import itertools
 import json
 
+#Generate every permutation of the grineer puzzle
 perms = list(itertools.permutations('12345678', 8))
 # print(len(perm))
 # print(perm)
 
+#Precalculated distances from 1 -> X where is is the next number to hit
 distances = {
     "cw": {
         1: 0,
@@ -28,13 +30,14 @@ distances = {
     }
 }
 
-
+#Looks up the distance from x -> y with the given direction d
+#Does this by rotating the numbers x,y such that x becomes equal to 1
 def getDistance(x, y, d):
     nums = [1, 2, 3, 4, 5, 6, 7, 8]
     y = nums[y - nums.index(x) - 1]
     return distances[d][y]
 
-
+#Goes through every number in the permutation given and adds all the distances up
 def calcDistance(perm):
     direction = {True: "cw", False: "ccw"}
     total = getDistance(1, int(perm[0]), direction[True])
@@ -45,6 +48,7 @@ def calcDistance(perm):
 
 
 totalDistance = {}
+#goes through every permutation and calculates distance of path stores in totalDistance
 for perm in perms:
     total = calcDistance(perm)
     totalDistance[''.join(perm)] = total

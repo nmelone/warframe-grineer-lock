@@ -59,6 +59,5 @@ largestKey = max(totalDistance, key=totalDistance.get)
 print("The shortest order is: " + smallestKey, "\nDistance: ", totalDistance[smallestKey])
 print("The longest order is: " + largestKey, "\nDistance: ",totalDistance[largestKey])
 
-sortTotalDistance = dict(sorted(totalDistance.items(), key=lambda item: item[1]))
-with open("E:/Nico/Documents/GitHub/warframe-grineer-lock/sortedTotalDistance.json", 'w') as f:
-    json.dump(sortTotalDistance,f)
+
+
